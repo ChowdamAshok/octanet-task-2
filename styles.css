@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url(https://img.freepik.com/free-photo/flat-lay-workstation-with-copy-space-laptop_23-2148430879.jpg?size=626&ext=jpg&ga=GA1.1.770439015.1710413352&semt=ais);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+h1{
+  color: white;
+  text-shadow: 5px 10px 30px white;
+  margin-left: 70px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 50px;
+  max-height: auto;
+  margin-left: 20px;
+  max-width: 50%;
+  background-color: #d5e5f3 ; 
+  padding: 25px;
+  border-radius: 25px;
+  box-shadow: 5px 10px 15px;
+  transition: box-shadow 0.3s easy;
+}
+.main-container:hover{
+  box-shadow: 0 0 8px  rgb(0, 252, 176);
+}
+
+
+
+h3{
+  text-align: left;
+  margin-left: 100px;
+}
+.task-container {
+  background-color: #ffe4b5;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  border-radius: 8px;
+  box-shadow: 5px 6px 8px;
+  transition: box-shadow 0.3s easy;
+}
+.task-container:hover{
+  box-shadow: 0 0 15px rgb(9, 9, 241);
+}
+button{
+  background-color: #90ee90;
+  line-height: 30px;
+  width: 100px;
+  transition: box-shadow 0.3s easy;
+  border-radius: 6px;
+  margin-left: 15px;
+
+}
+button:hover{
+  box-shadow: 0 0 15px green;
+  transition: all 2s;
+  background-color: #405de4, #f777f7, #fcaf45;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+
+}
+input[type=text]{
+  border: 2px groove green;
+  border-radius: 6px;
+  line-height: 30px;
+  box-shadow: 1px 2px 2px;
+}
+input[type=date]{
+  border: 2px groove green;
+  margin-top: 20px;
+  border-radius: 6px;
+  line-height: 30px;
+  margin-left: 15px;
+  box-shadow: 1px 2px 2px;
+}
+
+
+.task-number {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.edit-button {
+  background-color: #90ee90;
+  box-shadow: 1px 2px 2px;
+  margin-left: 20px;
+  transition: box-shadow 0.3s easy;
+  border-radius: 6px;
+  
+}
+.edit-button:hover{
+  box-shadow: 0 0 10px rgb(0, 255, 64);
+}
+
+
+.delete-button {
+  margin-left: 20px;
+  background-color: #ff6347;
+  box-shadow: 1px 2px 2px;
+  transition: box-shadow 0.3s easy;
+  border-radius: 6px;
+}
+.delete-button:hover{
+  box-shadow: 0 0 10px rgb(255, 0, 0);
+}
+
