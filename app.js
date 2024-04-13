@@ -23,18 +23,26 @@ function saveTask() {
   taskElement.textContent = task + " - " + date;
 
   var editButton = document.createElement("button");
-  editButton.textContent = "Edit";
   editButton.className = "edit-button";
   editButton.onclick = function() {
     editTask(taskElement);
   };
 
+  var editIcon = document.createElement("img");
+  editIcon.src = "https://cdn-icons-gif.flaticon.com/6454/6454112.gif";
+  editIcon.className = "button-icon";
+  editButton.appendChild(editIcon);
+
   var deleteButton = document.createElement("button");
-  deleteButton.textContent = "Delete";
   deleteButton.className = "delete-button";
   deleteButton.onclick = function() {
     deleteTask(taskContainer);
   };
+
+  var deleteIcon = document.createElement("img");
+  deleteIcon.src = "https://cdn-icons-gif.flaticon.com/11677/11677485.gif"; 
+  deleteIcon.className = "button-icon";
+  deleteButton.appendChild(deleteIcon);
 
   taskContainer.appendChild(taskNumber);
   taskContainer.appendChild(taskElement);
