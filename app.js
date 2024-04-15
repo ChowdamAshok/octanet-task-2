@@ -1,111 +1,127 @@
-let taskCounter = 1;
-let tasks = [];
-
-// Load tasks from Local Storage on page load
-window.onload = function() {
-  tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  tasks.forEach(function(taskData) {
-    addTaskToDOM(taskData);
-  });
-  taskCounter = tasks.length + 1;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-function saveTask() {
-  var taskInput = document.getElementById("taskInput");
-  var dateInput = document.getElementById("dateInput");
-  var task = taskInput.value;
-  var date = dateInput.value;
-
-  if (task.trim() === "" || date.trim() === "") {
-    alert("Please enter a task and date.");
-    return;
-  }
-
-  var taskData = { id: taskCounter, task: task, date: date, completed: false };
-  addTaskToDOM(taskData);
-  tasks.push(taskData);
-  saveTasksToLocalStorage();
-
-  taskInput.value = "";
-  dateInput.value = "";
-
-  taskCounter++;
+h1 {
+  color: white;
+  text-shadow: 5px 10px 30px white;
+  text-align: center;
 }
 
-function addTaskToDOM(taskData) {
-  var taskContainer = document.createElement("div");
-  taskContainer.className = "task-container";
-  taskContainer.setAttribute('data-id', taskData.id);
-
-  var taskNumber = document.createElement("span");
-  taskNumber.className = "task-number";
-  taskNumber.textContent = taskData.id + ". ";
-
-  var taskElement = document.createElement("span");
-  taskElement.textContent = taskData.task + " - " + taskData.date;
-
-  var editButton = document.createElement("button");
-  editButton.className = "edit-button";
-  editButton.onclick = function() {
-    editTask(taskElement, taskData);
-  };
-
-  var editIcon = document.createElement("img");
-  editIcon.src = "https://cdn-icons-gif.flaticon.com/6454/6454112.gif";
-  editIcon.className = "button-icon";
-  editButton.appendChild(editIcon);
-
-  var deleteButton = document.createElement("button");
-  deleteButton.className = "delete-button";
-  deleteButton.onclick = function() {
-    deleteTask(taskContainer, taskData);
-  };
-
-  var deleteIcon = document.createElement("img");
-  deleteIcon.src = "https://cdn-icons-gif.flaticon.com/11677/11677485.gif"; 
-  deleteIcon.className = "button-icon";
-  deleteButton.appendChild(deleteIcon);
-
-  taskContainer.appendChild(taskNumber);
-  taskContainer.appendChild(taskElement);
-  taskContainer.appendChild(editButton);
-  taskContainer.appendChild(deleteButton);
-
-  document.getElementById("tasksContainer").appendChild(taskContainer);
+.main-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 50px;
+  max-height: auto;
+  margin-left: 25%;
+  max-width: 50%;
+  background-color: #d5e5f3; 
+  padding: 25px;
+  border-radius: 25px;
+  box-shadow: 5px 10px 15px;
+  transition: box-shadow 0.3s ease;
 }
 
-function saveTasksToLocalStorage() {
-  localStorage.setItem('tasks', JSON.stringify(tasks));
+.main-container:hover {
+  box-shadow: 0 0 8px rgb(0, 252, 176);
 }
 
-function editTask(taskElement, taskData) {
-  var newTask = prompt("Edit task:", taskData.task);
-  if (newTask !== null) {
-    taskElement.textContent = newTask + " - " + taskData.date;
-    taskData.task = newTask;
-    saveTasksToLocalStorage();
-  }
+.task-entry {
+  background-color: #d5e5f3; 
+  border-radius: 20px;
+  padding: 10px;
+  transition: box-shadow 0.3s ease;
+  font-size: 30px;
 }
 
-function deleteTask(taskContainer, taskData) {
-  if (confirm("Are you sure you want to delete this task?")) {
-    taskContainer.remove();
-    tasks = tasks.filter(function(task) {
-      return task.id !== taskData.id;
-    });
-    saveTasksToLocalStorage();
-    updateTaskNumbers();
-  }
+.task-entry:hover {
+  box-shadow: 5px 10px 15px black;
 }
 
+h3 {
+  text-align: center;
+  margin-left: 100px;
+}
 
+.task-container {
+  background-color: #ffe4b5;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  border-radius: 8px;
+  box-shadow: 5px 6px 8px;
+  transition: box-shadow 0.3s ease;
+}
 
-function updateTaskNumbers() {
-  var taskContainers = document.querySelectorAll(".task-container");
-  taskCounter = 1;
-  taskContainers.forEach(function(taskContainer) {
-    var taskNumber = taskContainer.querySelector(".task-number");
-    taskNumber.textContent = taskCounter + ". ";
-    taskCounter++;
-  });
+.task-container:hover {
+  box-shadow: 0 0 15px rgb(9, 9, 241);
+}
+
+.savbtn {
+  background-color: #90ee90;
+  line-height: 30px;
+  width: 100px;
+  transition: box-shadow 0.3s ease;
+  border-radius: 6px;
+  margin-left: 15px;
+}
+
+.savbtn:hover {
+  box-shadow: 0 0 15px green;
+  border-radius:10px;
+}
+
+input[type=text], input[type=date] {
+  border: 2px groove green;
+  border-radius: 6px;
+  line-height: 30px;
+  box-shadow: 1px 2px 2px;
+}
+
+.task-number {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.edit-button{
+  box-shadow: 1px 2px 2px;
+  background-color: white;
+  margin-left: 20px;
+  transition: box-shadow 0.3s ease;
+  border-radius: 6px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+.edit-button img{
+  width: 30px;
+  height:auto;
+}
+
+.edit-button:hover {
+  box-shadow: 0 0 10px rgb(0, 255, 64);
+}
+.delete-button{
+  background-color: white;
+  box-shadow: 1px 2px 2px;
+  margin-left: 20px;
+  transition: box-shadow 0.3s ease;
+  border-radius: 6px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+.delete-button img{
+  width: 30px;
+  height: auto;
+}
+.delete-button:hover {
+  box-shadow: 0 0 10px rgb(255, 0, 0);
 }
